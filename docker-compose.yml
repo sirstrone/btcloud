@@ -1,0 +1,34 @@
+version: "3.0"
+services:
+  dtmachine:
+    build: ./
+    ports:
+      - "12800:12800"
+    volumes:
+      - ./:/app/   #宿主机：容器
+    dns:
+      - 223.5.5.5
+      - 223.6.6.6
+    depends_on:
+      - mariadb
+    networks:
+      - dtmachine-network
+        
+  mariadb:
+    image: qqfirst/mariadb:latest
+    ports:
+      - "3306:3306"
+    environment:
+      ROOT_PASSWORD : "123456"
+      DATABASE : "bt"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    dns: 
+      - 223.5.5.5
+      - 223.6.6.6
+    networks:
+      - dtmachine-network
+
+networks:
+  dtmachine-network:
+    # driver:  custom-driver-1
