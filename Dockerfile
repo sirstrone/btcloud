@@ -12,6 +12,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && ln -s /app/composer.phar /usr/bin/composer
 
 
+RUN php /app/composer.phar install
 WORKDIR /app
 #COPY / /app
 
