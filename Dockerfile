@@ -22,7 +22,7 @@ RUN   mkdir -p /tmp/logs \
       && ln -s /tmp  /app/runtime
 
 #暴露 http 
-EXPOSE 8000
+EXPOSE 12800
 VOLUME /app
 
 
